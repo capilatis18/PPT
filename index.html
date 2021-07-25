@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='estilos.css' type='text/css'>
+    
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>Rock, paper, scissors, lizard, spock</h1>
+    </header>
+    <div id="instructions">
+        <p>instructions here!</p>
+        <iframe width="250" height="170" src="https://www.youtube.com/embed/2H6JkhtEz58" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div id="container">
+        <div id="table">
+            <p id="result"></p>
+            <img id="player" src="rock.png">
+            <p id="vs">vs</p>
+            <img id="cpu" src="rock.png">
+        </div>
+        <div id="btns">
+            <button id="rock"><img src="rock.png"></button>
+            <button id="paper"><img src="paper.png"></button>
+            <button id="scissors"><img src="scissors.png"></button>
+            <button id="lizard"><img src="lizard.png"></button>
+            <button id="spock"><img src="spock.png"></button>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+  const rock = document.querySelector('#rock');
+  const paper = document.querySelector('#paper');
+  const scissors = document.querySelector('#scissors');
+  const lizard = document.querySelector('#lizard');
+  const spock = document.querySelector('#spock');
+  const player = document.querySelector('#player');
+  const cpu = document.querySelector('#cpu');
+  const resultado = document.querySelector('#result');
+
+function option(play){
+    images = ['rock.png', 'paper.png', 'scissors.png', 'lizard.png', 'spock.png'];
+    let computer = Math.floor(Math.random()* 5);
+// result
+evaluate = [
+    [0,1,2,2,1],
+    [2,0,1,1,2],
+    [1,2,0,2,1],
+    [1,2,1,0,2],
+    [2,1,2,1,0],
+];
+let result_text = ['empate', 'gano', 'pierdo'];
+let result = evaluate[computer][play];
+cpu.src = images[computer];
+resultado.textContent = result_text[result];
+}
+
+function game(a,b){
+    for (let index = 1; index <= 5; index++) {
+        if(play && computer){
+            option();
+        }
+    }
+};
+
+rock.addEventListener('click', () => {
+    player.src = 'rock.png';
+    option(0);
+});
+paper.addEventListener('click', () =>{
+    player.src = 'paper.png';
+    option(1);
+});
+scissors.addEventListener('click', () => {
+    player.src = 'scissors.png';
+    option(2);
+});
+lizard.addEventListener('click', () => {
+    player.src = 'lizard.png';
+    option(3);
+});
+spock.addEventListener('click', () => {
+    player.src = 'spock.png';
+    option(4);
+});
+</script>
