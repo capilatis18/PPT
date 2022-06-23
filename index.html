@@ -5,18 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='estilos.css' type='text/css'>
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet"> 
     <title>Document</title>
 </head>
 <body>
     <header>
-        <h1>Rock, paper, scissors, lizard, spock</h1>
+        <h1>Rock, Paper, Scissors, Lizard, Spock</h1>
     </header>
-    <div id="instructions">
-        <p>instructions here!</p>
-        <iframe width="250" height="170" src="https://www.youtube.com/embed/2H6JkhtEz58" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div id="modal" class="modal">
+        <div class="instructions">
+            <h2>Instructions here!</h2>
+            <iframe width="250" height="170" src="https://www.youtube.com/embed/2H6JkhtEz58" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <button id="gotIt">Got it</button>
+        </div>
     </div>
     <div id="container">
+        <button id="instrucciones">Instrucciones</button>
         <div id="table">
             <p id="result"></p>
             <img id="player" src="rock.png">
@@ -43,6 +49,18 @@
   const player = document.querySelector('#player');
   const cpu = document.querySelector('#cpu');
   const resultado = document.querySelector('#result');
+  const gotIt = document.querySelector('#gotIt');
+  const modal = document.querySelector('#modal');
+  const instrucciones = document.querySelector('#instrucciones');
+
+  gotIt.addEventListener('click', ()=>{
+    modal.classList.remove('.modal');
+    modal.classList.add('modal0');
+  });
+  instrucciones.addEventListener('click', ()=>{
+    modal.classList.remove('modal0');
+    modal.classList.add('.modal');
+  })
 
 function option(play){
     images = ['rock.png', 'paper.png', 'scissors.png', 'lizard.png', 'spock.png'];
@@ -55,7 +73,7 @@ evaluate = [
     [1,2,1,0,2],
     [2,1,2,1,0],
 ];
-let result_text = ['empate', 'gano', 'pierdo'];
+let result_text = ['Empate', 'Gano', 'Pierdo'];
 let result = evaluate[computer][play];
 cpu.src = images[computer];
 resultado.textContent = result_text[result];
